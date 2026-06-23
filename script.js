@@ -1,4 +1,3 @@
-// Agrega o modifica aquí todas las frases lindas que quieras dedicarle
 const frasesDeAmor = [
     "Tú y yo, para siempre 💖",
     "Gracias por estar en mi vida ✨",
@@ -17,7 +16,6 @@ const frasesDeAmor = [
     "Un millón de veces tú ✨",
     "Me encantas más que ayer 😍",
     "A tu lado todo es perfecto 🌹",
-    "Mi persona favorita 🐱❤️",
     "Te amo de aquí al infinito 🚀",
 ];
 
@@ -29,13 +27,8 @@ function crearFraseFlotante() {
     
     frase.innerText = frasesDeAmor[Math.floor(Math.random() * frasesDeAmor.length)];
     
-    // CORRECCIÓN AQUÍ: Tomamos el ancho del contenedor en lugar de window.innerWidth
-    const contenedorTarjeta = document.querySelector(".contenedor-tarjeta");
-    const anchoMaximo = contenedorTarjeta ? contenedorTarjeta.offsetWidth : window.innerWidth;
-    
-    // Centramos las letras para que queden flotando principalmente sobre el cuadro blanco
-    const posicionX = Math.random() * (anchoMaximo - 180);
-    frase.style.left = Math.max(10, posicionX) + "px"; 
+    const rangoDesplazamiento = Math.floor(Math.random() * 140) - 70; 
+    frase.style.left = `calc(50% + ${rangoDesplazamiento}px)`;
     
     const duracion = Math.random() * 4 + 6;
     frase.style.animationDuration = duracion + "s";
@@ -43,10 +36,8 @@ function crearFraseFlotante() {
     const escala = Math.random() * 0.2 + 0.9;
     frase.style.transform = `scale(${escala})`;
     
-    // Añadimos las frases dentro del contenedor protegido
-    const contenedorFrases = document.getElementById("contenedor-frases");
-    if (contenedorFrases) {
-        contenedorFrases.appendChild(frase);
+    if (contenedor) {
+        contenedor.appendChild(frase);
     }
     
     setTimeout(() => {
@@ -54,8 +45,8 @@ function crearFraseFlotante() {
     }, duracion * 1000);
 }
 
-// Lanza una frase nueva cada 1.2 segundos
-setInterval(crearFraseFlotante, 1200);
+// Lanza una frase nueva cada 1.3 segundos
+setInterval(crearFraseFlotante, 1300);
 
 for(let i = 0; i < 3; i++) {
     setTimeout(crearFraseFlotante, i * 300);
@@ -69,7 +60,6 @@ function mostrarFotoSecreta() {
     });
     
     document.getElementById("vista-texto").style.display = "none";
-    
     document.getElementById("vista-foto-secreta").style.display = "block";
 }
 
