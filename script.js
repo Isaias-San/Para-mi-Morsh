@@ -29,16 +29,25 @@ function crearFraseFlotante() {
     
     frase.innerText = frasesDeAmor[Math.floor(Math.random() * frasesDeAmor.length)];
     
-    const posicionX = Math.random() * (window.innerWidth - 180);
-    frase.style.left = posicionX + "px";
+    // CORRECCIÓN AQUÍ: Tomamos el ancho del contenedor en lugar de window.innerWidth
+    const contenedorTarjeta = document.querySelector(".contenedor-tarjeta");
+    const anchoMaximo = contenedorTarjeta ? contenedorTarjeta.offsetWidth : window.innerWidth;
+    
+    // Centramos las letras para que queden flotando principalmente sobre el cuadro blanco
+    const posicionX = Math.random() * (anchoMaximo - 180);
+    frase.style.left = Math.max(10, posicionX) + "px"; 
     
     const duracion = Math.random() * 4 + 6;
     frase.style.animationDuration = duracion + "s";
     
-    const escala = Math.random() * 0.2 + 0.9; // Entre 0.9 y 1.1
+    const escala = Math.random() * 0.2 + 0.9;
     frase.style.transform = `scale(${escala})`;
     
-    contenedor.appendChild(frase);
+    // Añadimos las frases dentro del contenedor protegido
+    const contenedorFrases = document.getElementById("contenedor-frases");
+    if (contenedorFrases) {
+        contenedorFrases.appendChild(frase);
+    }
     
     setTimeout(() => {
         frase.remove();
