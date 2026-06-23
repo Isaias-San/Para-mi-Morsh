@@ -9,7 +9,7 @@ body {
     height: 100vh;
     width: 100vw;
 
-    background-image: url('fotos/foto1.jpeg');
+    background-image: url('foto1.jpeg');
     background-size: contain;          
     background-position: center;     
     background-repeat: no-repeat; 
