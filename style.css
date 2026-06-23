@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+
+    background-image: url('fotos/foto1.jpeg');
+    background-size: contain;          
+    background-position: center;     
+    background-repeat: no-repeat; 
+    background-color: #ffe5ec;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- TARJETA CENTRAL PREMIUM --- */
+.tarjeta-principal {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(8px); 
+    padding: 20px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 77, 109, 0.25);
+    border: 2px solid white;
+    z-index: 10; 
+    text-align: center;
+}
+
+.texto-amor {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    color: #ff4d6d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+/* Animación de latido para el corazón central */
+.corazon-latido {
+    display: inline-block;
+    animation: latido 1.2s infinite ease-in-out;
+}
+
+@keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* --- FRASES FLOTANTES DE FONDO --- */
+.frase-flotante {
+    position: absolute;
+    bottom: -60px; /* Empiezan escondidas abajo de la pantalla */
+    background: rgba(255, 255, 255, 0.6);
+    padding: 8px 16px;
+    border-radius: 15px;
+    font-size: clamp(12px, 3.5vw, 15px);
+    color: #594d5b;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(255, 158, 181, 0.15);
+    white-space: nowrap;
+    pointer-events: none; /* No interfieren si intentas hacer clic en la tarjeta */
+    z-index: 1;
+    animation: flotarHaciaArriba 8s linear forwards;
+}
+
+@keyframes flotarHaciaArriba {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Aparece suavemente al subir */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        /* Sube cruzando toda la pantalla y se balancea ligeramente hacia los lados */
+        transform: translateY(-115vh) translateX(30px);
+        opacity: 0;
+    }
+}
+
+/* --- ESTILOS DEL BOTÓN OCULTO Y LA SORPRESA --- */
+.boton-secreto {
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.boton-secreto:active {
+    transform: scale(0.95);
+}
+
+.contenedor-secreto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    animation: aparecerSorpresa 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.foto-sorpresa {
+    width: 180px;
+    height: 180px;
+    object-fit: cover; 
+    border-radius: 50%; 
+    border: 4px solid #ff4d6d;
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.3); /* Sombra suave de neón */
+}
+
+.frase-secreta {
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
+    color: #ff4d6d;
+    max-width: 280px;
+    line-height: 1.3;
+}
+
+.btn-cerrar-secreto {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #a393a5;
+    cursor: pointer;
+    margin-top: 5px;
+    font-weight: 600;
+}
+.btn-cerrar-secreto:hover {
+    color: #ff4d6d;
+}
+
+@keyframes aparecerSorpresa {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}

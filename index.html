@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi persona favorita ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="musica-romantica" src="musica/Cancion.mpeg"></audio>
+    <div id="contenedor-frases"></div>
+
+    <div class="tarjeta-principal">
+        <div id="vista-texto">
+            <h1 class="texto-amor boton-secreto" onclick="mostrarFotoSecreta()">
+                I Love You <span class="corazon-latido">❤️</span>
+            </h1>
+        </div>
+
+        <div id="vista-foto-secreta" style="display: none;">
+            <div class="contenedor-secreto">
+                <img src="fotos/foto2.jpeg" alt="Nosotros" class="foto-sorpresa">
+                <p class="frase-secreta">"Eres mi rincón favorito en el mundo entero. Te amo hoy y siempre. ✨💖"</p>
+                <span class="btn-cerrar-secreto" onclick="ocultarFotoSecreta()">✨ Regresar ✨</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
